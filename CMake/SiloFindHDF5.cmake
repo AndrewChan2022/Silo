@@ -76,6 +76,7 @@ if(HDF5_FOUND)
     if(WIN32)
         # DLL may also be needed by testing infrastructure
         get_target_property(HDF5_DLL ${HDF5_C_LIBRARIES} IMPORTED_LOCATION_RELEASE )
+        message(STATUS "***dll: ${HDF5_DLL}  dest:  ${CMAKE_INSTALL_BINDIR}")
         if(SILO_ENABLE_SILEX OR SILO_ENABLE_BROWSER)
             install(FILES ${HDF5_DLL} DESTINATION ${CMAKE_INSTALL_BINDIR}
                     PERMISSIONS OWNER_READ OWNER_WRITE

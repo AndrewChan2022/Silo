@@ -16,3 +16,57 @@ In addition, Silo supports piecewise-constant (e.g., zone-centered) and piecewis
 Silo also supports the decomposition of meshes into arbitrary subsets and subset hierarchies including materials with optimal mixing.
 
 Although Silo is a serial library, key features enable it to be applied easily and effectively in scalable, parallel applications using the [Multiple Independent File (MIF)](https://www.hdfgroup.org/2017/03/mif-parallel-io-with-hdf5/) parallel I/O paradigm.
+
+
+## build
+
+
+```bash
+conda activate temp
+conda install hdf5
+conda install perl
+conda instal zlib
+
+# install qt and add qt bin to path: C:\Qt\6.5.3\msvc2019_64\bin
+
+mkdir build
+cd build
+
+
+# manual set dll files
+CMake/SiloFindHDF5.cmake
+    message(STATUS "***dll: ${HDF5_DLL}  dest:  ${CMAKE_INSTALL_BINDIR}")
+
+CMake/SiloFindZlib.cmake
+    # get_target_property(ZLIB_DLL zlib IMPORTED_LOCATION_RELEASE)
+    set(ZLIB_DLL "C:/Users/amcax/Miniconda3/Library/bin/zlib.dll")
+    message(STATUS "***dll: ${ZLIB_DLL}  dest:  ${CMAKE_INSTALL_BINDIR}")
+
+# replace xxx with your user
+cmake .. -DSILO_ENABLE_PYTHON_MODULE=ON `
+-DHDF5_DIR=C:/Users/xxx/miniconda3/envs/temp/Library `
+-DZLIB_DIR=C:/Users/xxx/miniconda3/envs/temp/Library `
+-DZLIB_INCLUDE_DIR=C:/Users/xxx/Miniconda3/envs/temp/Library/include `
+-DZLIB_LIBRARY=C:/Users/xxx/Miniconda3/envs/temp/Library/lib/zlib.lib `
+-DSILO_ENABLE_FORTRAN=OFF `
+-DSILO_ENABLE_SILEX=OFF `
+-DSILO_ENABLE_BROWSER=OFF `
+-DSILO_ENABLE_BROWSER=ON `
+-DSILO_ENABLE_SILEX=ON `
+
+cmake --build . --config Release
+cmake --install .
+# install to ../SiloInstall
+
+```
+
+## packge
+
+zip ../SiloInstall to Silo.zip
+
+## install
+
+extract Silo.zip to c:/program files/Silo
+add to path:  c:/program files/Silo/bin
+add to PYTHONPATH:  c:/program files/Silo/bin
+

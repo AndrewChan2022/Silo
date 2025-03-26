@@ -75,7 +75,9 @@ if(ZLIB_FOUND)
     set(HAVE_LIBZ 1)
     set(HAVE_ZLIB_H 1)
     if(WIN32)
-        get_target_property(ZLIB_DLL zlib IMPORTED_LOCATION_RELEASE)
+        # get_target_property(ZLIB_DLL zlib IMPORTED_LOCATION_RELEASE)
+        set(ZLIB_DLL "C:/Users/xxx/Miniconda3/envs/temp/Library/bin/zlib.dll")
+        message(STATUS "***dll: ${ZLIB_DLL}  dest:  ${CMAKE_INSTALL_BINDIR}")
         if(SILO_ENABLE_SILEX OR SILO_ENABLE_BROWSER)
             install(FILES ${ZLIB_DLL} DESTINATION ${CMAKE_INSTALL_BINDIR}
                     PERMISSIONS OWNER_READ OWNER_WRITE
