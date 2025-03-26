@@ -67,6 +67,8 @@ zip ../SiloInstall to Silo.zip
 ## install
 
 extract Silo.zip to c:/program files/Silo
+
 add to path:  c:/program files/Silo/bin
+
 add to PYTHONPATH:  c:/program files/Silo/bin
 
