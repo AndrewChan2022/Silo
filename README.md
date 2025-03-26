@@ -64,6 +64,14 @@ cmake --install .
 
 zip ../SiloInstall to Silo.zip
 
+lib/cmake/Silo/SiloConfig.cmake:
+```bash
+include (${PACKAGE_PREFIX_DIR}/cmake/SiloTargets.cmake)
+=>
+include (${PACKAGE_PREFIX_DIR}/lib/cmake/Silo/SiloTargets.cmake)
+
+```
+
 ## install
 
 extract Silo.zip to c:/program files/Silo
@@ -72,3 +80,32 @@ add to path:  c:/program files/Silo/bin
 
 add to PYTHONPATH:  c:/program files/Silo/bin
 
+## c++ use
+
+
+
+```cmake
+find_package(Silo REQUIRED)
+find_library(SILO_LIBRARY NAMES silo siloh5 PATHS "${SILO_INCLUDE_DIR}/../lib")
+target_include_directories(${PROJECT_NAME} PUBLIC 
+    ${SILO_INCLUDE_DIR}
+)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    ${SILO_LIBRARY} 
+)
+# make sure Silo/bin before VisIt location
+if(MSVC)
+    set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_ENVIRONMENT "${SILO_INCLUDE_DIR}/../bin;%PATH%")
+endif()
+
+```
+
+## python use
+
+```python
+import Silo
+import numpy as np
+
+# Create Silo file
+db = Silo.Create("test.silo", "Test", Silo.DB_HDF5, Silo.DB_CLOBBER)
+```
