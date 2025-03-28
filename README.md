@@ -109,3 +109,16 @@ import numpy as np
 # Create Silo file
 db = Silo.Create("test.silo", "Test", Silo.DB_HDF5, Silo.DB_CLOBBER)
 ```
+
+## document
+
+https://silo.readthedocs.io/intro.html
+
+https://visit-sphinx-github-user-manual.readthedocs.io/en/3.4rc/data_into_visit/SiloFormat.html
+
+https://visit-dav.github.io/visit-website/pdfs/GettingDataIntoVisIt2.0.0.pdf
+
+## demo
+
+https://github.com/AndrewChan2022/gensilo
+
