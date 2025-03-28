@@ -17,6 +17,13 @@ Silo also supports the decomposition of meshes into arbitrary subsets and subset
 
 Although Silo is a serial library, key features enable it to be applied easily and effectively in scalable, parallel applications using the [Multiple Independent File (MIF)](https://www.hdfgroup.org/2017/03/mif-parallel-io-with-hdf5/) parallel I/O paradigm.
 
+## official prebuilt binary
+
+https://visit-dav.github.io/visit-website/releases-as-tables/
+
+the dev link:  
+
+https://github.com/visit-dav/visit/releases/download/v3.4.1/visit_windowsdev_3.4.1.zip
 
 ## build
 
